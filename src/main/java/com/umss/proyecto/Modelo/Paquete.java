@@ -1,6 +1,15 @@
 package com.umss.proyecto.Modelo;
-import javax.persistence.Entity.
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Paquete {
+    @Id
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+
    private int id;
    private String nombre;
    private Categoria categoria;

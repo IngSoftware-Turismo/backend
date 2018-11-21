@@ -1,9 +1,16 @@
 package com.umss.proyecto.Modelo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import java.util.Date;
 
+@Entity
 public class Reserva {
+    @Id
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
     private int id;
     private Date fecha;
     private Turista turista;
