@@ -13,8 +13,8 @@ public class Reserva {
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private int id;
     private Date fecha;
-    private Turista turista;
-    private Paquete paquete;
+   // private Turista turista;
+    //private Paquete paquete;
     private String metodoPago;
     private String estadoPago;
     private Boolean eliminado;
@@ -35,7 +35,7 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    public Turista getTurista() {
+    /*public Turista getTurista() {
         return turista;
     }
 
@@ -43,13 +43,13 @@ public class Reserva {
         this.turista = turista;
     }
 
-    public Paquete getPaquete() {
+    /*public Paquete getPaquete() {
         return paquete;
     }
 
     public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
-    }
+    }*/
 
     public String getMetodoPago() {
         return metodoPago;

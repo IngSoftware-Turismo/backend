@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
@@ -18,7 +19,7 @@ public class PaqueteControlador {
     private PaqueteRepositorio paqueteRepositorio;
     //@RequestMapping(method = GET,path = "/get")
     @GetMapping(path = "/get")
-    public Iterable<Paquete> getPaquete(){
+    public Iterable<Paquete> getPaquetes(){
         return paqueteRepositorio.findAll();
     }
 
@@ -27,4 +28,10 @@ public class PaqueteControlador {
         return paqueteRepositorio.save(paquete);
 
     }
+    @RequestMapping(path = "/getPaquete", method = GET)
+    public Paquete getPaquete(@RequestParam(value = "nombre") String nombre){
+        return paqueteRepositorio.getPaquete(nombre);
+
+    }
+
 }
