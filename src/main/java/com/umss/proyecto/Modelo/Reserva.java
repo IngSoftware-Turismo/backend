@@ -1,23 +1,31 @@
 package com.umss.proyecto.Modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
 
 import java.util.Date;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Reserva {
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Column(name = "id_reserva")
     private int id;
     private Date fecha;
-   // private Turista turista;
-    //private Paquete paquete;
     private String metodoPago;
     private String estadoPago;
     private Boolean eliminado;
+    @ManyToOne
+    @JoinColumn(name = "ci_turista")
+    private Turista turista;
+    @ManyToOne
+    @JoinColumn(name = "id_paquete")
+    private Paquete paquete;
 
     public int getId() {
         return id;
@@ -35,21 +43,13 @@ public class Reserva {
         this.fecha = fecha;
     }
 
-    /*public Turista getTurista() {
+    public Turista getTurista() {
         return turista;
     }
 
     public void setTurista(Turista turista) {
         this.turista = turista;
     }
-
-    /*public Paquete getPaquete() {
-        return paquete;
-    }
-
-    public void setPaquete(Paquete paquete) {
-        this.paquete = paquete;
-    }*/
 
     public String getMetodoPago() {
         return metodoPago;

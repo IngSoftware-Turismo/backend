@@ -1,36 +1,32 @@
 package com.umss.proyecto.Modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Categoria {
     @Id
+    @Column(name="id_categoria")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id_categoria;
+    private Long id;
     private String nombre;
-	
-
-    public Categoria(){}
-    public Categoria(Long id,String text){
-        this.id_categoria = id;
-        this.nombre = text;
-    }
-    public Categoria(String text){
-        this.nombre = text;
+    @OneToMany(mappedBy = "categoria")
+    private List<Paquete> paquete;
+    public Long getId() {
+        return id;
     }
 
-    public String getText() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
         return nombre;
     }
 
-    public Long getId() {
-        return id_categoria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setNombre(String s){
-        nombre =s;
-    }
+
 }

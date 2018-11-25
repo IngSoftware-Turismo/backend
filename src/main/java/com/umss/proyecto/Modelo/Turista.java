@@ -1,46 +1,64 @@
 package com.umss.proyecto.Modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "ci")
 public class Turista {
     @Id
+    @Column(name="ci_turista")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long ci_turista;
-    private String nombre;
+    private Long ci;
     private String apellidos;
     private String correo;
-    private Long telefono;
+    private int telefono;
+    private String nombre;
+    @OneToMany(mappedBy = "turista")
+    private List<Reserva> reservas;
 
-    public Turista(){}
-    public Turista(Long ci,String text,String text1,String text2,Long tel){
-        this.ci_turista = ci;
-        this.nombre = text;
-        this.apellidos = text1;
-        this.correo = text2;
-        this.telefono = tel;
+    public Long getCi() {
+        return ci;
     }
 
-    public String getText() {
-        return nombre;
+    public void setCi(Long ci) {
+        this.ci = ci;
     }
-    public String getText1() {
+
+    public String getApellidos() {
         return apellidos;
     }
-    public String getText2() {
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCorreo() {
         return correo;
     }
-    public Long getCi() {
-        return ci_turista;
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-    public Long getTel() {
+
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setNombre(String s){
-        nombre =s;
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }
