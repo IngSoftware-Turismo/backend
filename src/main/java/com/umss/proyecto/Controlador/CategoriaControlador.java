@@ -9,8 +9,6 @@ import javax.validation.Valid;
 
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-//solicitar desde angular
-//crossorigin 
 @RestController
 @RequestMapping(path="/categoria")
 public class CategoriaControlador {
