@@ -17,15 +17,22 @@ public class Reserva {
     @Column(name = "id_reserva")
     private int id;
     private Date fecha;
+    @Column(name="metodo_pago")
     private String metodoPago;
+    @Column(name= "estado_pago")
     private String estadoPago;
     private Boolean eliminado;
     @ManyToOne
     @JoinColumn(name = "ci_turista")
     private Turista turista;
+
     @ManyToOne
     @JoinColumn(name = "id_paquete")
     private Paquete paquete;
+
+    public void setPaquete(Paquete paquete) {
+        this.paquete = paquete;
+    }
 
     public int getId() {
         return id;

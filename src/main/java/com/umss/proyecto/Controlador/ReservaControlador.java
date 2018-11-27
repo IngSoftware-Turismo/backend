@@ -23,6 +23,7 @@ public class ReservaControlador {
 
     @RequestMapping(path ="/post", method = POST)
     public Reserva ingresar(@RequestBody Reserva reserva){
+      System.out.println("se esta reservando");
       return reservaRepositorio.save(reserva);
     }
 
