@@ -13,7 +13,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(path ="/paquete")
-
+@CrossOrigin
 public class PaqueteControlador {
     @Autowired
     private PaqueteRepositorio paqueteRepositorio;
@@ -33,5 +33,11 @@ public class PaqueteControlador {
         return paqueteRepositorio.getPaquete(nombre);
 
     }
+    @GetMapping(path = "/getPaquetes")
+    public Iterable<Paquete> getPaquetes(@RequestParam(value = "id_categoria")Long id){
+        return paqueteRepositorio.getPaquetes(id);
+
+    }
+
 
 }

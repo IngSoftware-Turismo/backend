@@ -12,6 +12,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping(path="/turista")
+@CrossOrigin
 public class TuristaControlador {
     @Autowired
     private TuristaRepositorio turistaRepositorio;

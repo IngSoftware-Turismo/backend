@@ -13,7 +13,6 @@ import java.util.List;
 public class Turista {
     @Id
     @Column(name="ci_turista")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long ci;
     private String apellidos;
     private String correo;
